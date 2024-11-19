@@ -1,0 +1,425 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Backend Node.js API",
+      "description": "Esta es una API para Mercado Libre",
+      "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "tags": [
+      {
+        "name": "Categorías",
+        "description": "Operaciones relacionadas con las categorías"
+      },
+      {
+        "name": "Productos",
+        "description": "Operaciones relacionadas con los productos"
+      },
+      {
+        "name": "Usuarios",
+        "description": "Operaciones relacionadas con los usuarios"
+      },
+      {
+        "name": "Roles",
+        "description": "Operaciones relacionadas con los roles"
+      },
+      {
+        "name": "Autenticación",
+        "description": "Operaciones de autenticación de usuarios"
+      },
+      {
+        "name": "Archivos",
+        "description": "Operaciones relacionadas con los archivos"
+      },
+      {
+        "name": "Bitácora",
+        "description": "Operaciones relacionadas con la bitácora"
+      }
+    ],
+    "paths": {
+      "/api/categorias/": {
+        "get": {
+          "tags": ["Categorías"],
+          "description": "Obtiene todas las categorías",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": ["Categorías"],
+          "description": "Crea una nueva categoría",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "example": "Electrónica"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created"
+            }
+          }
+        }
+      },
+      "/api/categorias/{id}": {
+        "get": {
+          "tags": ["Categorías"],
+          "description": "Obtiene una categoría por su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": ["Categorías"],
+          "description": "Actualiza una categoría por su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Categorías"],
+          "description": "Elimina una categoría por su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "400": {
+              "description": "Bad Request"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/productos/": {
+        "get": {
+          "tags": ["Productos"],
+          "description": "Obtiene todos los productos",
+          "parameters": [
+            {
+              "name": "s",
+              "in": "query",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": ["Productos"],
+          "description": "Crea un nuevo producto",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "archivoId": {
+                    "example": "12345"
+                  },
+                  "titulo": {
+                    "example": "Smartphone"
+                  },
+                  "descripcion": {
+                    "example": "Un smartphone de última generación"
+                  },
+                  "precio": {
+                    "example": "199.99"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/productos/{id}": {
+        "get": {
+          "tags": ["Productos"],
+          "description": "Obtiene un producto por su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": ["Productos"],
+          "description": "Actualiza un producto por su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "archivoId": {
+                    "example": "12345"
+                  },
+                  "titulo": {
+                    "example": "Smartphone"
+                  },
+                  "descripcion": {
+                    "example": "Un smartphone de última generación"
+                  },
+                  "precio": {
+                    "example": "199.99"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Productos"],
+          "description": "Elimina un producto por su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "No Content"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/usuarios/": {
+        "get": {
+          "tags": ["Usuarios"],
+          "description": "Obtiene todos los usuarios",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": ["Usuarios"],
+          "description": "Crea un nuevo usuario",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rol": {
+                    "example": "admin"
+                  },
+                  "email": {
+                    "example": "user@example.com"
+                  },
+                  "password": {
+                    "example": "password123"
+                  },
+                  "nombre": {
+                    "example": "Juan Pérez"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Created"
+            }
+          }
+        }
+      },
+      "/api/auth/": {
+        "post": {
+          "tags": ["Autenticación"],
+          "description": "Autentica al usuario",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "user@example.com"
+                  },
+                  "password": {
+                    "example": "password123"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        }
+      },
+      "/api/auth/tiempo": {
+        "get": {
+          "tags": ["Autenticación"],
+          "description": "Obtiene el estado de la sesión de autenticación",
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/archivos/": {
+        "get": {
+          "tags": ["Archivos"],
+          "description": "Obtiene todos los archivos",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        },
+        "post": {
+          "tags": ["Archivos"],
+          "description": "Crea un nuevo archivo",
+          "responses": {
+            "201": {
+              "description": "Created"
+            },
+            "400": {
+              "description": "Bad Request"
+            }
+          }
+        }
+      },
+      "/api/archivos/{id}": {
+        "get": {
+          "tags": ["Archivos"],
+          "description": "Obtiene un archivo por su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/bitacora/": {
+        "get": {
+          "tags": ["Bitácora"],
+          "description": "Obtiene todas las entradas de la bitácora",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+      }
+    }
+  }
+  
