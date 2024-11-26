@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const productos = require('../controllers/productos.controller')
-const Authorize = require ('../middlewares/auth.middleware')
+const Authorize = require('../middlewares/auth.middleware')
 
 router.get('/', Authorize('Usuario,Administrador'), productos.getAll)
 router.get('/:id', Authorize('Usuario,Administrador'), productos.productoGetValidator, productos.get)

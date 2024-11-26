@@ -11,15 +11,13 @@ self.validarArchivoID = [
 self.validarDatosArchivo = [
     body('file', 'El archivo es obligatorio')
         .custom((value, { req }) => {
-            if (!req.file) {
+            if (!req.file) 
                 throw new Error('El archivo es obligatorio');
-            }
-            if (req.file.size === 0) {
+            if (req.file.size === 0) 
                 throw new Error('El archivo no debe estar vacío');
-            }
-            if (req.file.originalname.length > 186) {
+            if (req.file.originalname.length > 186) 
                 throw new Error('El nombre del archivo es inválido');
-            }
+
             return true;
         })
 ]
@@ -28,15 +26,13 @@ self.validarDatosIDArchivo = [
     param('id', 'Es obligatorio ID').not().isEmpty().isInt(),
     body('file', 'El archivo es obligatorio')
         .custom((value, { req }) => {
-            if (!req.file) {
+            if (!req.file) 
                 throw new Error('El archivo es obligatorio');
-            }
-            if (req.file.size === 0) {
+            if (req.file.size === 0) 
                 throw new Error('El archivo no debe estar vacío');
-            }
-            if (req.file.originalname.length > 186) {
+            if (req.file.originalname.length > 186) 
                 throw new Error('El nombre del archivo es inválido');
-            }
+
             return true;
         })
 ]
@@ -127,9 +123,11 @@ self.create = async function (req, res, next) {
 self.update = async function (req, res, next) {
     try {
         const errors = validationResult(req)
-        if (!errors.isEmpty()) throw new Error(JSON.stringify(errors));
+        if (!errors.isEmpty()) 
+            throw new Error(JSON.stringify(errors));
 
-        if (req.file == undefined) return res.status(400).json('El archivo es obligatorio');
+        if (req.file == undefined) 
+            return res.status(400).json('El archivo es obligatorio');
 
         let id = req.params.id
         let image = await archivo.findByPk(id)
