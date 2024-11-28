@@ -6,37 +6,45 @@ const { GeneraToken } = require('../services/jwttoken.service')
 const Authorize = (rol) => {
     return async (req, res, next) => {
         try {
-            const authHeader = req.header('Authorization')
-            const error = new Error('acceso denegado')
-            error.statusCode = 401
-            if (authHeader == null || !authHeader.startsWith('Bearer '))
-                return next(error)
-
-
-            //obtiene el token de la solicitud
-            const token = authHeader.split(' ')[1]
-            const decodedToken = jwt.verify(token, jwtSecret)
-
-            //verifica si el rol del token esta en la lista de roles permitidos
-            if (rol.split(',').indexOf(decodedToken[ClaimTypes.Role]) == -1)
-                return next(error)
-
-
-            req.decodedToken = decodedToken
-            var minutosRestantes = (decodedToken.exp - (new Date().getTime() / 1000)) / 60
-
-            if (minutosRestantes < 5) {
-                var nuevoToken = GeneraToken(decodedToken[ClaimTypes.Name], decodedToken[ClaimTypes.GivenName], decodedToken[ClaimTypes.Role])
-                res.header("Set-Authorization", nuevoToken)
+            const authHeader = req.header('Authorization');
+            if (!authHeader || !authHeader.startsWith('Bearer ')) {
+                const error = new Error('acceso denegado');
+                error.statusCode = 401;
+                return next(error);
             }
 
-            //continua con el metodo
-            next()
-        } catch (error) {
-            error.statusCode = 401
-            next(error)
+            // Obtiene el token de la solicitud
+            const token = authHeader.split(' ')[1];
+            const decodedToken = jwt.verify(token, jwtSecret);
+
+            // Verifica si el rol del token está permitido
+            if (!rol.split(',').includes(decodedToken[ClaimTypes.Role])) {
+                const error = new Error('acceso denegado');
+                error.statusCode = 401;
+                return next(error);
+            }
+
+            req.decodedToken = decodedToken;
+
+            const minutosRestantes = (decodedToken.exp - (Date.now() / 1000)) / 60;
+
+            if (minutosRestantes < 5) {
+                const nuevoToken = GeneraToken(
+                    decodedToken[ClaimTypes.Name],
+                    decodedToken[ClaimTypes.GivenName],
+                    decodedToken[ClaimTypes.Role]
+                );
+                res.header("Set-Authorization", nuevoToken);
+            }
+
+            // Continua con el flujo
+            next();
+        } catch (err) {
+            const error = new Error('acceso denegado');
+            error.statusCode = 401;
+            next(error); // Envía el error personalizado al middleware de manejo de errores
         }
     };
-}
+};
 
 module.exports = Authorize

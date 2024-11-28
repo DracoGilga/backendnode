@@ -8,4 +8,4 @@ router.post('/', Authorize('Usuario'), carrito.carritoBodyValidator, carrito.cre
 router.put('/:idProducto', Authorize('Usuario'), carrito.carritoPutValidator, carrito.updateProducto)
 router.delete('/:idProducto', Authorize('Usuario'), carrito.carritoIDProductoValidator, carrito.deleteProducto)
 
-module.exports = routerw
+module.exports = router
