@@ -19,3 +19,23 @@ Thu Nov 28 2024 15:58:34 GMT-0600 (hora estándar central) - 401 - ::1 - Anónim
 Thu Nov 28 2024 15:58:48 GMT-0600 (hora estándar central) - 401 - ::1 - Anónimo - acceso denegado
 Thu Nov 28 2024 15:59:17 GMT-0600 (hora estándar central) - 401 - ::1 - Anónimo - acceso denegado
 Thu Nov 28 2024 16:04:20 GMT-0600 (hora estándar central) - 401 - ::1 - Anónimo - acceso denegado
+Sat Nov 30 2024 14:37:01 GMT-0600 (hora estándar central) - 500 - ::1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999021619-cocheNiño.jpg'
+Sat Nov 30 2024 14:37:24 GMT-0600 (hora estándar central) - 500 - ::1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999044313-cocheNiño.jpg'
+Sat Nov 30 2024 14:37:50 GMT-0600 (hora estándar central) - 500 - ::1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999070082-images.jpg'
+Sat Nov 30 2024 14:45:47 GMT-0600 (hora estándar central) - 500 - ::ffff:127.0.0.1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999547796-prueba1.jpg'
+Sat Nov 30 2024 14:47:07 GMT-0600 (hora estándar central) - 401 - ::ffff:127.0.0.1 - Anónimo - acceso denegado
+Sat Nov 30 2024 14:48:16 GMT-0600 (hora estándar central) - 500 - ::ffff:127.0.0.1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999696958-producto1.jpg'
+Sat Nov 30 2024 14:49:30 GMT-0600 (hora estándar central) - 500 - ::ffff:127.0.0.1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999770915-producto1.jpg'
+Sat Nov 30 2024 14:53:12 GMT-0600 (hora estándar central) - 500 - ::ffff:127.0.0.1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999992646-producto1.jpg'
+Sat Nov 30 2024 14:53:13 GMT-0600 (hora estándar central) - 500 - ::ffff:127.0.0.1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999993509-producto1.jpg'
+Sat Nov 30 2024 14:53:14 GMT-0600 (hora estándar central) - 500 - ::ffff:127.0.0.1 - Anónimo - ENOENT: no such file or directory, open 'C:\Codigo\backendnode\backendnode\uploads\1732999994170-producto1.jpg'
+Sat Nov 30 2024 15:11:00 GMT-0600 (hora estándar central) - 401 - ::ffff:127.0.0.1 - Anónimo - acceso denegado
+Sat Nov 30 2024 15:11:16 GMT-0600 (hora estándar central) - 401 - ::ffff:127.0.0.1 - Anónimo - acceso denegado
+Sat Nov 30 2024 15:12:08 GMT-0600 (hora estándar central) - 401 - ::ffff:127.0.0.1 - Anónimo - acceso denegado
+Sun Dec 01 2024 12:36:54 GMT-0600 (hora estándar central) - 401 - ::ffff:127.0.0.1 - Anónimo - acceso denegado
+Sun Dec 01 2024 12:37:05 GMT-0600 (hora estándar central) - 401 - ::1 - Anónimo - acceso denegado
+Sun Dec 01 2024 13:13:44 GMT-0600 (hora estándar central) - 401 - ::1 - Anónimo - acceso denegado
+Sun Dec 01 2024 16:23:55 GMT-0600 (hora estándar central) - 401 - ::ffff:127.0.0.1 - Anónimo - acceso denegado
+Sun Dec 01 2024 16:36:10 GMT-0600 (hora estándar central) - 500 - ::1 - patito@uv.mx - {"errors":[{"type":"field","value":-5,"msg":"Es obligatorio el ID del producto","path":"cantidad","location":"body"}]}
+Sun Dec 01 2024 16:38:43 GMT-0600 (hora estándar central) - 500 - ::1 - patito@uv.mx - {"errors":[{"type":"field","value":-7,"msg":"Es obligatorio el ID del producto","path":"cantidad","location":"body"}]}
+Sun Dec 01 2024 16:39:38 GMT-0600 (hora estándar central) - 500 - ::1 - patito@uv.mx - {"errors":[{"type":"field","value":-7,"msg":"Es obligatorio el ID del producto","path":"cantidad","location":"body"}]}

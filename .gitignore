@@ -32,3 +32,5 @@ Thumbs.db
 *.swp
 *.swo
 log/log.txt
+
+*.jpg
