@@ -36,3 +36,4 @@ log/log.txt
 *.jpg
 log/*
 /logs/*
+log/log.txt
