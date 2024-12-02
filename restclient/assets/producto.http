@@ -1,0 +1,57 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZ3ZlcmFAdXYubXgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJHdWlsbGVybW8gVmVyYSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluaXN0cmFkb3IiLCJpc3MiOiJTZXJ2aWRvckZlaUpXVCIsImF1ZCI6IkNsaWVudEZlaUpXVCIsImlhdCI6MTczMzAwMTA5MCwiZXhwIjoxNzMzMDAyMjkwfQ.d4JEdj3hQxRoXr942285XbOGK8A7ml_K_n-mwNL74UU
+
+
+GET http://localhost:3000/api/productos
+Authorization: Bearer {{token}}
+
+###
+
+GET http://localhost:3000/api/productos/1
+Authorization: Bearer {{token}}
+
+
+###
+
+POST http://localhost:3000/api/productos/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "titulo": "Producto prueba",
+    "descripcion": "Producto prueba descripcion",
+    "precio": 12.20,
+    "archivoId": 2
+}
+
+
+###
+
+PUT http://localhost:3000/api/productos/17
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "titulo": "Producto prueba editado",
+    "descripcion": "Producto prueba descripcion editado",
+    "precio": 12.2,
+    "archivoId": 1
+}
+
+###
+
+DELETE http://localhost:3000/api/productos/17
+Authorization: Bearer {{token}}
+
+###
+
+POST http://localhost:3000/api/productos/20/categoria
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "categoriaid": 1
+}
+
+###
+
+DELETE http://localhost:3000/api/productos/20/categoria/1

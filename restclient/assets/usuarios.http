@@ -1,0 +1,27 @@
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "email": "patito@uv.mx",
+    "password": "patito"
+}
+
+###
+
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "email": "gvera@uv.mx",
+    "password": "patito"
+}
+
+###
+
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "email": "sulem477@gmail",
+    "password": "patito"
+}

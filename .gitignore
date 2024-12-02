@@ -31,5 +31,8 @@ Thumbs.db
 # Temporary files
 *.swp
 *.swo
+log/log.txt
+
+*.jpg
 log/*
 /logs/*
