@@ -5,10 +5,10 @@
       "description": "Esta es una API para Mercado Libre",
       "version": "1.0.0"
     },
-    "host": "localhost:3000",
+    "host": "192.168.56.108",
     "basePath": "/",
     "schemes": [
-      "http"
+      "https"
     ],
     "tags": [
       {
