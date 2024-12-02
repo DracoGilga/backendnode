@@ -1,0 +1,35 @@
+@Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiZ3ZlcmFAdXYubXgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJHdWlsbGVybW8gVmVyYSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluaXN0cmFkb3IiLCJpc3MiOiJTZXJ2aWRvckZlaUpXVCIsImF1ZCI6IkNsaWVudEZlaUpXVCIsImlhdCI6MTczMzA5MTI0OSwiZXhwIjoxNzMzMDkyNDQ5fQ.nVUKZJuqjCo5SgCrfboJFbuPlqJb-CR55jzInaVdao4
+
+GET http://localhost:3000/api/categorias
+Authorization: Bearer {{Token}}
+
+###
+
+POST http://localhost:3000/api/auth 
+Content-Type: application/json
+
+{
+    "email": "gvera@uv.mx",
+    "password": "patito"
+}
+
+###
+
+POST http://localhost:3000/api/auth
+Content-Type: application/json
+
+{
+    "email": "patito@uv.mx",
+    "password": "patito"
+}
+
+###
+
+GET http://localhost:3000/api/auth/tiempo
+Authorization: Bearer {{Token}}
+
+###
+
+GET http://localhost:3000/api/roles
+Content-Type: application/json
+Authorization: Bearer {{Token}}

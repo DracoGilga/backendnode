@@ -1,0 +1,35 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoicGF0aXRvQHV2Lm14IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiVXN1YXJpbyBwYXRpdG8iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc3VhcmlvIiwiaXNzIjoiU2Vydmlkb3JGZWlKV1QiLCJhdWQiOiJDbGllbnRGZWlKV1QiLCJpYXQiOjE3MzMwOTE3NzMsImV4cCI6MTczMzA5Mjk3M30.y7F_PakscbRXBrWIBT_SLuFsAKqBT7COALIu1U23FOU
+
+GET http://localhost:3000/api/carritos
+Authorization: Bearer {{token}}
+
+###
+
+GET http://localhost:3000/api/carritos/1
+Authorization: Bearer {{token}}
+
+
+###
+
+POST http://localhost:3000/api/carritos/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "productoid": 1,
+    "cantidad": 10
+}
+
+
+###
+
+PUT http://localhost:3000/api/carritos/1
+Content-Type: application/json
+
+{
+    "cantidad": 6
+}
+
+###
+
+DELETE http://localhost:3000/api/carritos/1
