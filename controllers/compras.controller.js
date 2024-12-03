@@ -1,11 +1,35 @@
 const { compraproducto, compra, usuario, Sequelize, rol, producto } = require('../models');
 const { body, param, validationResult } = require('express-validator');
-const Op = Sequelize.Op;
+const Op = Sequelize.Op; 
+const ClaimTypes = require('../config/claimtypes');
+const db = require('../models/index');
+const sequelize = db.sequelize;
 
 let self = {};
 
 self.compraIDValidator = [
     param('idCompra', 'Es obligatorio un ID numérico').not().isEmpty().isInt()
+];
+
+self.compraValidator = [
+    body('productos')
+        .custom((value, { req }) => {
+            if (!Array.isArray(req.body.productos) || req.body.productos.length === 0) {
+                throw new Error('Debe contener al menos un producto');
+            }
+            req.body.productos.forEach((producto, index) => {
+                if (!producto.productoid || !producto.cantidad) {
+                    throw new Error(`Debe tener producto y cantidad validos`);
+                }
+                if (!Number.isInteger(producto.productoid) || producto.productoid < 1) {
+                    throw new Error(`Debe tener un idproducto un número entero mayor o igual a 1`);
+                }
+                if (!Number.isInteger(producto.cantidad) || producto.cantidad < 1) {
+                    throw new Error(`Debe tener una cantidad número entero mayor o igual a 1`);
+                }
+            });
+            return true;
+        })
 ];
 
 self.get = async function (req, res, next) {
@@ -142,5 +166,81 @@ async function obtenerproducto(item) {
         return productoItem;
     }
 }
+
+self.create = async function (req, res, next) {
+    let transaccion;
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) throw new Error(JSON.stringify(errors));
+        let decodedToken = req.decodedToken;
+        if (decodedToken == null || decodedToken[ClaimTypes.Name] == null) {
+            throw new Error();
+        }
+        const usuarioRecuperado = await usuario.findOne({
+            where: { email: decodedToken[ClaimTypes.Name] },
+            raw: true,
+            attributes: ['id', 'email']
+        });
+        if (usuarioRecuperado == null) {
+            res.status(404).send();
+        }
+        transaccion = await sequelize.transaction();
+        for (let productos of req.body.productos) {
+            let productoRecuperado = await producto.findOne({
+                where: { id: productos.productoid },
+                raw: true,
+                attributes: ['id', 'precio', 'cantidadDisponible']
+            });
+            let nuevaCantidadDisponible = productoRecuperado.cantidadDisponible - productos.cantidad;
+            if (nuevaCantidadDisponible >= 0) {
+                let actualizarProducto = await producto.update(
+                    { cantidadDisponible: nuevaCantidadDisponible },
+                    { where: { id: productos.productoid } },
+                    { transaction: transaccion }
+                );
+                if (actualizarProducto == null) {
+                    throw new Error();
+                }
+            } else {
+                return res.status(409).send("Sin stock");
+            }
+        }
+
+        let compraCreada = await compra.create({
+            fechapedido: new Date(),
+            usuarioid: usuarioRecuperado.id
+        }, { transaction: transaccion });
+        if (compraCreada == null) {
+            await transaccion.rollback();
+            throw new Error();
+        }
+        for (let productos of req.body.productos) {
+            if (isNaN(productos.productoid) || productos.productoid == null) {
+                throw new Error();
+            }
+            let productoRecuperado = await producto.findOne({
+                where: { id: productos.productoid },
+                raw: true,
+                attributes: ['id', 'precio', 'cantidadDisponible']
+            });
+            let compraproductoCreado = await compraproducto.create({
+                productoid: productoRecuperado.id,
+                compraid: compraCreada.id,
+                cantidad: productos.cantidad,
+                precio: productoRecuperado.precio,
+            }, { transaction: transaccion });
+            if (compraproductoCreado == null) {
+                throw new Error();
+            }
+        }
+        await transaccion.commit();
+        return res.status(201).json("Funciono");
+    } catch (error) {
+        if (transaccion && !transaccion.finished) {
+            await transaccion.rollback();
+        }
+        next(error);
+    }
+};
 
 module.exports = self;

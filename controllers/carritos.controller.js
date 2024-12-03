@@ -11,12 +11,12 @@ self.carritoIDProductoValidator = [
 
 self.carritoBodyValidator = [
     body('productoid', 'Es obligatorio el ID del producto').not().isEmpty().isInt(),
-    body('cantidad', 'Es obligatorio el ID del producto').not().isEmpty().isInt({ min: 1, max: 100 })
+    body('cantidad', 'Es obligatorio el ID del producto').not().isEmpty().isInt({ min: 1, max: 10 })
 ];
 
 self.carritoPutValidator = [
     param('idProducto', 'Es obligatorio el ID del producto').not().isEmpty().isInt(),
-    body('cantidad', 'Es obligatorio el ID del producto').not().isEmpty().isInt({ min: 1, max: 100 })
+    body('cantidad', 'Es obligatorio el ID del producto').not().isEmpty().isInt({ min: 1, max: 10 })
 ];
 
 self.get = async function (req, res, next) {

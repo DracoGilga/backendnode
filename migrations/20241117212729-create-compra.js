@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       fechapedido: {
-        type: Sequelize.STRING
+        type: Sequelize.DATEONLY
       },
       usuarioid: {
         type: Sequelize.UUID,

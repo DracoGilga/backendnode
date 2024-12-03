@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }))
 
 //se requiere si se acceded desde un navegador
 var corsOptions = {
-    origin: ["http://localhost:8080", "http://localhost:8080"],
+    origin: "*",
     methods: "GET,PUT,POST,DELETE"
 }
 
