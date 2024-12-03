@@ -37,3 +37,4 @@ log/log.txt
 log/*
 /logs/*
 log/log.txt
+ecosystem.config.js
