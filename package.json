@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node index.js; else nodemon index.js; fi"
+        "start": "NODE_ENV=production node index.js"
     },
     "keywords": [],
     "author": "Pablo Hernandez, Cesar Gonzalez Lopez",

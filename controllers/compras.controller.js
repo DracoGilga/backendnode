@@ -1,7 +1,6 @@
 const { compraproducto, compra, usuario, Sequelize, rol, producto } = require('../models');
 const { body, param, validationResult } = require('express-validator');
-const Op = Sequelize.Op;
-const { Sequelize } = require('sequelize');
+const Op = Sequelize.Op; 
 const ClaimTypes = require('../config/claimtypes');
 const db = require('../models/index');
 const sequelize = db.sequelize;
