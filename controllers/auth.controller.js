@@ -42,11 +42,13 @@ self.login = async function (req, res, next) {
 
 //get api/auth/tiempo
 self.tiempo = async function (req, res) {
-    const tiempo = TiempoRestanteToken(req)
-    if (tiempo == null) {
-        res.status(404).send()
+    const tiempoRestante = TiempoRestanteToken(req);
+
+    if (tiempoRestante === null) {
+        return res.status(404).json({ mensaje: 'Token inválido o expirado' }); 
     }
-    res.status(200).send()
+
+    return res.status(200).send(String(tiempoRestante));
 }
 
 module.exports = self

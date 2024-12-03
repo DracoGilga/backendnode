@@ -44,7 +44,7 @@ self.getAll = async function (req, res, next) {
         const filters = {};
         if (s) {
             filters.titulo = {
-                [Op.like]: `%${s}`
+                [Op.like]: `%${s}%`
             };
         }
 
